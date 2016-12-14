@@ -29,8 +29,9 @@
 
 <p>Our task was to predict loan defaults using data provided by <a href="https://www.lendingclub.com">Lending Club</a>, a peer to peer lending service. The organization makes de-identified loan <a href="https://www.lendingclub.com/info/download-data.action">data</a> available publicly. </p>
 
-<p>We began by exploring the loan data. We categorized loans into those currently in delinquency or default (risky loans) and those with no payment violations (not risky loans).<br>
-Initially, we wanted to explore some basic relationships. In the first instance, we were interested in how poorly loans had performed based on when they were issued.  </p>
+<p>We began by exploring the loan data. We categorized loans into those currently in delinquency or default (risky loans) and those with no payment violations (not risky loans).  </p>
+
+<p>Initially, we wanted to explore some basic relationships. In the first instance, we were interested in how poorly loans had performed based on when they were issued.  </p>
 
 <p><strong>Figure 1:</strong>  </p>
 
@@ -38,19 +39,25 @@ Initially, we wanted to explore some basic relationships. In the first instance,
 
 <p>Additionally, we were interested in whether higher risk borrowers (those with lower grades) consistently had to pay higher interest rates (and whether they indeed defaulted more often). We also wanted to make sure to account for imbalance in the dataset - since most borrowers don't default.  </p>
 
-<p><strong>Figure 2:</strong>                            <strong>Figure 3:</strong>  </p>
+<p><strong>Figure 2:</strong></p>
 
 <p><img src="https://thefaulters.github.io/Lending-Club-Default-Predictions/Images/Risk.png" alt=""> <img src="https://thefaulters.github.io/Lending-Club-Default-Predictions/Images/Imbalance.png" alt=""></p>
 
 <h2>
 <a id="cleaning" class="anchor" href="#cleaning" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Cleaning</h2>
 
-<p>Using all data from 2007 through the second quarter of 2016 resulted in a dataset with 1,119,194 loan observations. Initially, it is clear from Figure 1 above that risky loan rates decrease dramatically for loans that have been active for a shorter period of time. We feared that this could be due to the short duration of those loans relative to their maturity, and that using these to build a predictive model would result in identifying risky borrowers as not risky borrowers. So we dropped all 2016 data, using only data from 2007 through 2015, a dataset with 887,440 loan observations.  </p>
+<p>Using all data from 2007 through the second quarter of 2016 resulted in a dataset with 1,119,194 loan observations. The dataset had 111 variables - pieces of information on each borrower ranging from the interest rate on the loan to a personal description or sales pitch describing the purpose of the loan.    </p>
+
+<p>It is clear from Figure 1 above that risky loan rates decrease dramatically for loans that have been active for a shorter period of time. We feared that this could be due to the short duration of those loans relative to their maturity, and that using these to build a predictive model would result in identifying risky borrowers as not risky borrowers. So we dropped all 2016 data, using only data from 2007 through 2015.</p>
+
+<p>To run most of our models, we needed the data to be in numerical format. However, the dataset was full of various datatypes. So our cleaning process mostly consisted of ensuring all numbers were indeed in numerical format, and generating dummy variables for categorical variables like loan grade and state of residence. Following feedback from our TF, we also dropped variables that could only be determined after the loan was issued. For example, delayed payments or late fees.   </p>
+
+<p>After the cleaning process, the final dataset contained 887,440 observations, 216 predictor variables and one binary response variable: a 1 for risky loans and a 0 for safe loans.  </p>
 
 <h2>
 <a id="random-forests" class="anchor" href="#random-forests" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Random forests</h2>
 
-<p><strong>Figure 4:</strong>  </p>
+<p><strong>Figure 3:</strong>  </p>
 
 <p><img src="https://thefaulters.github.io/Lending-Club-Default-Predictions/Images/RF_opt.png" alt=""></p>
 
