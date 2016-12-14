@@ -1,40 +1,64 @@
-<!DOCTYPE html>
-<html lang="en-us">
+<!doctype html>
+<html>
   <head>
-    <meta charset="UTF-8">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
     <title>Lending club default predictions by TheFaulters</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" type="text/css" href="stylesheets/normalize.css" media="screen">
-    <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,700' rel='stylesheet' type='text/css'>
-    <link rel="stylesheet" type="text/css" href="stylesheets/stylesheet.css" media="screen">
-    <link rel="stylesheet" type="text/css" href="stylesheets/github-light.css" media="screen">
+    <link rel="stylesheet" href="stylesheets/styles.css">
+    <link rel="stylesheet" href="stylesheets/github-dark.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+    <script src="javascripts/respond.js"></script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <!--[if lt IE 8]>
+    <link rel="stylesheet" href="stylesheets/ie.css">
+    <![endif]-->
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+
   </head>
   <body>
-    <section class="page-header">
-      <h1 class="project-name">Lending club default predictions</h1>
-      <h2 class="project-tagline">A chronicle of our analysis of Lending Club data.</h2>
-      <a href="https://github.com/TheFaulters/Lending-Club-Default-Predictions" class="btn">View on GitHub</a>
-      <a href="https://github.com/TheFaulters/Lending-Club-Default-Predictions/zipball/master" class="btn">Download .zip</a>
-      <a href="https://github.com/TheFaulters/Lending-Club-Default-Predictions/tarball/master" class="btn">Download .tar.gz</a>
-    </section>
+      <div id="header">
+        <nav>
+          <li class="fork"><a href="https://github.com/TheFaulters/Lending-Club-Default-Predictions">View On GitHub</a></li>
+          <li class="downloads"><a href="https://github.com/TheFaulters/Lending-Club-Default-Predictions/zipball/master">ZIP</a></li>
+          <li class="downloads"><a href="https://github.com/TheFaulters/Lending-Club-Default-Predictions/tarball/master">TAR</a></li>
+          <li class="title">DOWNLOADS</li>
+        </nav>
+      </div><!-- end header -->
 
-    <section class="main-content">
-      <h1>
+    <div class="wrapper">
+
+      <section>
+        <div id="title">
+          <h1>Lending club default predictions</h1>
+          <p>A chronicle of our analysis of Lending Club data.</p>
+          <hr>
+          <span class="credits left">Project maintained by <a href="https://github.com/TheFaulters">TheFaulters</a></span>
+          <span class="credits right">Hosted on GitHub Pages &mdash; Theme by <a href="https://twitter.com/michigangraham">mattgraham</a></span>
+        </div>
+
+        <h1>
 <a id="lending-rate-default-predictions" class="anchor" href="#lending-rate-default-predictions" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Lending Rate Default Predictions</h1>
 
 <p><em>Arthur Aguillar, Dwijo Goswami and James Fallon</em></p>
 
 <h2>
-<a id="data-exploration-and-cleaning" class="anchor" href="#data-exploration-and-cleaning" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Data exploration and cleaning</h2>
+<a id="data-exploration" class="anchor" href="#data-exploration" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Data exploration</h2>
 
-<p>We began by exploring the loan data.<br>
-We were interested in how poorly loans had performed based on when they were issued.  </p>
+<p>Our task was to predict loan defaults using data provided by <a href="https://www.lendingclub.com">Lending Club</a>, a peer to peer lending service. The organization makes de-identified loan <a href="https://www.lendingclub.com/info/download-data.action">data</a> available publicly. </p>
+
+<p>We began by exploring the loan data. We categorized loans into those currently in delinquency or default (risky loans) and those with no payment violations (not risky loans).<br>
+Initially, we wanted to explore some basic relationships. In the first instance, we were interested in how poorly loans had performed based on when they were issued.  </p>
 
 <p><img src="https://thefaulters.github.io/Lending-Club-Default-Predictions/Images/Loans-delinquency-bar.png" alt=""></p>
 
-<p>Further, we were interested in whether higher risk borrowers consistently had to pay higher interest rates (and whether they indeed defaulted more often).  </p>
+<p>Additionally, we were interested in whether higher risk borrowers (those with lower grades) consistently had to pay higher interest rates (and whether they indeed defaulted more often). We also wanted to make sure to account for imbalance in the dataset - since most borrowers don't default.  </p>
 
-<p><img src="https://thefaulters.github.io/Lending-Club-Default-Predictions/Images/Risk.png" alt=""> <img src="https://thefaulters.github.io/Lending-Club-Default-Predictions/Images/Imbalance.png" alt=""></p>
+<p><img src="https://thefaulters.github.io/Lending-Club-Default-Predictions/Images/Risk.png" alt=""> <img src="https://thefaulters.github.io/Lending-Club-Default-Predictions/Images/Imbalance.png" alt="">   </p>
+
+<h2>
+<a id="cleaning" class="anchor" href="#cleaning" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Cleaning</h2>
 
 <h2>
 <a id="random-forests" class="anchor" href="#random-forests" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Random forests</h2>
@@ -45,14 +69,17 @@ We were interested in how poorly loans had performed based on when they were iss
 <h2>
 <a id="support-vector-classifier" class="anchor" href="#support-vector-classifier" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Support vector classifier</h2>
 
-      <footer class="site-footer">
-        <span class="site-footer-owner"><a href="https://github.com/TheFaulters/Lending-Club-Default-Predictions">Lending club default predictions</a> is maintained by <a href="https://github.com/TheFaulters">TheFaulters</a>.</span>
+<h3>
+<a id="references" class="anchor" href="#references" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>References</h3>
 
-        <span class="site-footer-credits">This page was generated by <a href="https://pages.github.com">GitHub Pages</a> using the <a href="https://github.com/jasonlong/cayman-theme">Cayman theme</a> by <a href="https://twitter.com/jasonlong">Jason Long</a>.</span>
-      </footer>
+<h3>
+<a id="acknowledgements" class="anchor" href="#acknowledgements" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Acknowledgements</h3>
 
-    </section>
+<p>We would like to thank our Teaching Fellow Qing Zhao for her guidance and support on this project. We would also like to thank the teaching staff of CS109a for their feedback and suggestions.</p>
+      </section>
 
-  
+    </div>
+    <!--[if !IE]><script>fixScale(document);</script><![endif]-->
+    
   </body>
 </html>
