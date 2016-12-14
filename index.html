@@ -78,7 +78,7 @@
 
 <p>While we had expected SVM to be more efficient than other models, it was in fact one of the slowest models we attempted. As a result, we tuned with 1% of the dataset (8,874 observations), trained with 5% and validated with 5% (44,372 observations).   </p>
 
-<p>On the guidance of Hsu et al, we tuned for gamma - a parameter specific to the radial kernel - and C - the misclassification parameter. We also scaled the x input to have mean 0 and standard deviation 1.</p>
+<p>On the guidance of Hsu et al, we tuned for gamma - a parameter specific to the radial kernel - and C - the misclassification parameter. We also scaled the x input to have mean 0 and standard deviation 1. As with our other models, we balanced the class weights to account for the underrepresentation of risky loans in the overall dataset.</p>
 
 <p><strong>Results:</strong></p>
 
