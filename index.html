@@ -32,16 +32,21 @@
 <p>We began by exploring the loan data. We categorized loans into those currently in delinquency or default (risky loans) and those with no payment violations (not risky loans).<br>
 Initially, we wanted to explore some basic relationships. In the first instance, we were interested in how poorly loans had performed based on when they were issued.  </p>
 
-<p><img src="https://thefaulters.github.io/Lending-Club-Default-Predictions/Images/Loans-delinquency-bar.png" alt=""></p>
+<p><img src="https://thefaulters.github.io/Lending-Club-Default-Predictions/Images/Loans-delinquency-bar.png" alt="Figure 1:"></p>
 
-<p>Additionally, we were interested in whether higher risk borrowers (those with lower grades) consistently had to pay higher interest rates (and whether they indeed defaulted more often). We also wanted to make sure to account for imbalance in the dataset - since most borrowers don't default.
-<img src="https://thefaulters.github.io/Lending-Club-Default-Predictions/Images/Risk.png" alt=""> <img src="https://thefaulters.github.io/Lending-Club-Default-Predictions/Images/Imbalance.png" alt=""></p>
+<p>Additionally, we were interested in whether higher risk borrowers (those with lower grades) consistently had to pay higher interest rates (and whether they indeed defaulted more often). We also wanted to make sure to account for imbalance in the dataset - since most borrowers don't default.  </p>
+
+<p><img src="https://thefaulters.github.io/Lending-Club-Default-Predictions/Images/Risk.png" alt="Figure 2:"> <img src="https://thefaulters.github.io/Lending-Club-Default-Predictions/Images/Imbalance.png" alt="Figure 3:"></p>
 
 <h2>
 <a id="cleaning" class="anchor" href="#cleaning" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Cleaning</h2>
 
+<p>Using all data from 2007 through the second quarter of 2016 resulted in a dataset with 1,119,194 loan observations. Initially, it is clear from Figure 1 above that risky loan rates decrease dramatically for loans that have been active for a shorter period of time. We feared that this could be due to the short duration of those loans relative to their maturity, and that using these to build a predictive model would result in identifying risky borrowers as not risky borrowers. So we dropped all 2016 data, using only data from 2007 through 2015, a dataset with 887,440 loan observations.  </p>
+
 <h2>
 <a id="random-forests" class="anchor" href="#random-forests" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Random forests</h2>
+
+<p><img src="https://thefaulters.github.io/Lending-Club-Default-Predictions/Images/RF_opt.png" alt="Figure 4:"></p>
 
 <h2>
 <a id="logistic-regression" class="anchor" href="#logistic-regression" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Logistic regression</h2>
