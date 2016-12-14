@@ -1,0 +1,6 @@
+{
+  "name": "Lending-club-default-predictions",
+  "tagline": "A chronicle of our analysis of Lending Club data.",
+  "body": "# Lending Rate Default Predictions\r\n_Arthur Aguillar, Dwijo Goswami and James Fallon_\r\n\r\n## Data exploration and cleaning\r\n\r\n![](https://thefaulters.github.io/Lending-Club-Default-Predictions/Images/Loans-delinquency-bar.png)\r\n\r\n![](https://thefaulters.github.io/Lending-Club-Default-Predictions/Images/Risk.png)\r\n\r\n## Random forests  \r\n\r\n## Logistic regression  \r\n\r\n## Support vector classifier",
+  "note": "Don't delete this file! It's used internally to help with page regeneration."
+}
