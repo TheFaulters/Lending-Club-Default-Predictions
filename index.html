@@ -108,6 +108,8 @@
 
 <p>On the guidance of Hsu et al, we tuned for gamma - a parameter specific to the radial kernel - and C - the misclassification parameter. We also scaled the x input to have mean 0 and standard deviation 1. As with our other models, we balanced the class weights to account for the underrepresentation of risky loans in the overall dataset.   </p>
 
+<p>The performance overall of SVM was good, but not better than Random Forests (see results below). Importantly, Random Forests outperformed SVM from a computational perspective - we were unable to use the full dataset for training and testing SVM.  </p>
+
 <p><strong>Figure 7:</strong>
 <img src="https://thefaulters.github.io/Lending-Club-Default-Predictions/Images/svm_opt.png" alt="">  </p>
 
@@ -127,7 +129,7 @@
 
 <p>In all of our assessments, we consistently found that Random Forests outperformed all other models in terms of accuracy of prediction for the risky class.  </p>
 
-<p>When we finally tested our optimized model of choice, we found it predicts risky loans with 93.5% accuracy overall in a testing set equivalent to 60% of our full dataset (over 500,000 loans). The in-class accuracy performance is less impressive. The model accurately predicts 42.62% of true risky lenders observed in this test set.  </p>
+<p>When we finally tested our optimized model of choice, we found it predicts the risk status of loans with 93.5% accuracy overall in a testing set equivalent to 60% of our full dataset (over 500,000 loans). The risky class accuracy performance is less impressive. The model accurately predicts 42.62% of true risky lenders observed in this test set.  </p>
 
 <h2>
 <a id="appendix-sentiment-analysis" class="anchor" href="#appendix-sentiment-analysis" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Appendix: Sentiment analysis</h2>
