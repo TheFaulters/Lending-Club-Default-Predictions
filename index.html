@@ -71,9 +71,9 @@
 
 <p>Random Forests is described as an 'ensemble' learning method for classification. Such a learning method runs multiple learning algorithms in order to improve predictive performance over a singular prediction (Rokach). The model generates randomized decision trees, and aggregates the mode prediction across these trees for classification problems. The randomization of the trees reduces the possibilities of overfitting the prediction to the training data.</p>
 
-<p>Random Forests was the basis for our baseline numbers during Milestone 4. However, the results in the final project submission is not strictly comparable to Milestone 4 results, as we made a number of changes to our data and model based on feedback. Most prominently, we removed a number of highly correlated variables in our cleaning exercise, and we are now using balanced class weights to compensate for the imbalanced data.</p>
+<p>Random Forests was the basis for our baseline numbers during Milestone 4. However, the results in the final project submission are not strictly comparable to Milestone 4 results, as we made a number of changes to our data and model based on feedback. Most prominently, we removed a number of highly correlated variables in our cleaning exercise, and we are now using balanced class weights to compensate for the imbalanced data.</p>
 
-<p>Despite these changes, our original arguments for using Random Forests in Milestone 4 are still applicable. The model is very efficient (compared to the other models we tested), and has had prior success in predicting loan defaults in P2P platforms (Pandey, J.N.). The model is also particularly good at handling high multidimensionality, as it treats variables in a sequential manner as it goes through the trees.</p>
+<p>Despite these changes, our original arguments for using Random Forests in Milestone 4 are still applicable. The model is very efficient (compared to the other models we tested), and has had prior success in predicting loan defaults in P2P platforms (Pandey, J.N.). The model is also particularly good at handling high dimensionality, as it treats variables in a sequential manner as it goes through the trees.</p>
 
 <p>In our modeling we first optimized Random Forest for number of trees and depth of the trees. We then fitted a larger sub-sample for the most predictive number of trees and depth size. As with all out models, we balanced the class weights to compensate for the unbalanced dataset shown above.  </p>
 
@@ -84,9 +84,9 @@
 <h2>
 <a id="logistic-regression" class="anchor" href="#logistic-regression" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Logistic regression</h2>
 
-<p>Logistic Regression is the first model that comes to mind in terms of binary classification. It is a probabilistic model for categorical dependent variables i.e. it uses the input data to predicts the probability of the output category. This model tends to perform better in datasets where the classification problem is linearly separable. Logistic Regression also offers us the opportunity to penalize coefficient predictions.  The L1 and L2 penalties also provide us room to do feature selection and compensate for the high dimensionality of any dataset.</p>
+<p>Logistic Regression is the first model that comes to mind in terms of binary classification. It is a probabilistic model for categorical dependent variables i.e. it uses the input data to predicts the probability of the output category. This model tends to perform better in datasets where the classification problem is linearly separable. Logistic Regression also offers us the opportunity to penalize coefficient predictions.  The l1 and l2 penalties also provide us room to do feature selection and compensate for the high dimensionality of any dataset.</p>
 
-<p>The approach to optimizing the Logistic Regression model was as follows. We first optimized for the penalty parameter using 3 fold cross validation, for both L1 and L2 penalties. Once we had the optimal parameter for each penalty function, we fitted the data on a larger subsample to test for accuracy. The L1 penalty consistently outperformed the L2 penalty. However, in the case of our dataset, we did not find Logistic Regression to perform better than Random Forests both in terms of accuracy or computational efficiency.   </p>
+<p>The approach to optimizing the Logistic Regression model was as follows. We first optimized for the penalty parameter using 3 fold cross validation, for both L1 and L2 penalties. Once we had the optimal parameter for each penalty function, we fitted the data on a larger subsample to test for accuracy. The l1 penalty consistently outperformed the l2 penalty. However, in the case of our dataset, we did not find Logistic Regression to perform better than Random Forests either in terms of accuracy or computational efficiency.   </p>
 
 <p><strong>Figure 5: l1 optimization</strong><br>
 <img src="https://thefaulters.github.io/Lending-Club-Default-Predictions/Images/l1_opt.png" alt="">  </p>
@@ -95,23 +95,23 @@
 <img src="https://thefaulters.github.io/Lending-Club-Default-Predictions/Images/l2_opt.png" alt=""></p>
 
 <h2>
-<a id="support-vector-machine" class="anchor" href="#support-vector-machine" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Support vector machine</h2>
-
-<p><strong>Figure 7:</strong>
-<img src="https://thefaulters.github.io/Lending-Club-Default-Predictions/Images/svm_opt.png" alt=""></p>
+<a id="support-vector-classifier" class="anchor" href="#support-vector-classifier" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Support Vector Classifier</h2>
 
 <p>Next, we used a support vector machine to classify loan risk. We chose SVM because our dataset is very large and features a binary response variable. Our approach was guided by James et al pp 344-35 and Hsu et al.  </p>
 
 <p>While we had expected SVM to be more efficient than other models, it was in fact one of the slowest models we attempted. As a result, we tuned with 1% of the dataset (8,874 observations), trained with 5% and validated with 5% (44,372 observations).   </p>
 
-<p>On the guidance of Hsu et al, we tuned for gamma - a parameter specific to the radial kernel - and C - the misclassification parameter. We also scaled the x input to have mean 0 and standard deviation 1. As with our other models, we balanced the class weights to account for the underrepresentation of risky loans in the overall dataset.  </p>
+<p>On the guidance of Hsu et al, we tuned for gamma - a parameter specific to the radial kernel - and C - the misclassification parameter. We also scaled the x input to have mean 0 and standard deviation 1. As with our other models, we balanced the class weights to account for the underrepresentation of risky loans in the overall dataset.   </p>
+
+<p><strong>Figure 7:</strong>
+<img src="https://thefaulters.github.io/Lending-Club-Default-Predictions/Images/svm_opt.png" alt="">  </p>
 
 <h1>
 <a id="results" class="anchor" href="#results" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Results</h1>
 
-<p>One of the most important feedback we received during Milestone 4, was to focus less on the overall accuracy of the prediction and more on the ability of our model to predict loan risk. Ultimately, we care about our models ability to predict a risky loan, which will always be a smaller number of cases in a healthy loan portfolio.</p>
+<p>The most important feedback we received from Milestone 4 was to focus less on the overall accuracy of the prediction and more on the ability of our model to predict loan risk. Ultimately, we care about our models' ability to predict a risky loan, which will always be a smaller number of cases in a healthy loan portfolio.</p>
 
-<p>Therefore, in our final results and model selection, we have compared models not on their overall accuracy, but on their ability to predict loan risk. We used two mechanisms to compare their relative performance - a Receiver Operating Curve and a Precision/Recall curve.</p>
+<p>Therefore, in our final results and model selection, we have compared models not on their overall accuracy, but on their ability to predict loan risk. We used two mechanisms to compare their relative performance - a Receiver Operating Curve (ROC) and a Precision/Recall curve.</p>
 
 <p>A Receiver Operating Curve is perhaps the most intuitive to understand. It represents the trade off between a true positive and a false positive prediction. As any model attempts to identify more 'true' risky loans, it is likely to identify a number of non-risky loans as risky as collateral damage for spreading its net too far. The lower the collateral damage, the better the model. Therefore one can use ROC to understand how efficiently any model is identifying defaults correctly. Most intuitively, this can be understood as the area under the ROC curve. The higher the area under the curve, the more efficiently the model is making the ROC tradeoff.</p>
 
@@ -120,14 +120,14 @@
 <p><strong>Figure 8:</strong><br>
 <img src="https://thefaulters.github.io/Lending-Club-Default-Predictions/Images/ROC.png" alt=""><img src="https://thefaulters.github.io/Lending-Club-Default-Predictions/Images/Penalty_Recall.png" alt="">  </p>
 
-<p>In all of our assessments, we consistently find Random Forests to be outperforming all the other models in loan riskiness prediction. When we finally tested our optimized model of choice, we found it can predict ______% of risky loans accurately.  </p>
+<p>In all of our assessments, we consistently found that Random Forests outperformed all other models in terms of accuracy of prediction for the risky class. When we finally tested our optimized model of choice, we found it predict ______% of risky loans accurately in a testing set.  </p>
 
 <h2>
 <a id="appendix-sentiment-analysis" class="anchor" href="#appendix-sentiment-analysis" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Appendix: Sentiment analysis</h2>
 
 <p>While we had initially dropped the borrower's description, we wanted to revisit this variable to conduct sentiment analysis. Essentially, we hoped to use the borrower's loan pitch to see if descriptions contained any particular red flags.  </p>
 
-<p>We first performed a visual analysis of the words used more often by risky borrowers and non risky borrowers. It is interesting to observe that the word "card" is the most used by risky borrowers, while the word loan is the most used by non risky borrowers: One simple intuition for that is that risky borrowers are often refinancing their older debts as well as borrowing for consumption reasons, while non risky borrowers apply for loans due to different reasons.  </p>
+<p>We first performed a visual analysis of the words used more often by risky borrowers and non risky borrowers. It is interesting to observe that the word "card" is the most used more frequently by risky borrowers, while the word loan is the most used relatively more frequently by non risky borrowers: One possible intuition for this is that risky borrowers are often refinancing their older debts as well as borrowing for consumption reasons, while non risky borrowers apply for loans due to different reasons.  </p>
 
 <p><strong>Figure 9: Risky Borrowers</strong><br>
 <img src="https://thefaulters.github.io/Lending-Club-Default-Predictions/Images/risky_borrowerss.png" alt=""></p>
@@ -137,7 +137,7 @@
 
 <p>We now select our preferred model. We will optimize - by testing distinct values for penalties and performing cross validation - 2 kinds of weighted logistic regressions, one that uses a l1 penalty (analogous to a Lasso, therefore excluding the least explanatory variables by "shrinking" coefficients up to 0), and the other that uses a l2 penalty (with a regulariation parameter analogous to a Ridge, that shrink coeffcients towards zero, but not to the point of excluding coefficients. We also use weighted models due to the imbalances on the response variable. Under the penalties that maximize accuracy, our weighted logistic regression with penalty l1 performs 85.8% of accurate classifications, while our weighted logistic regression with l2 penalty perfroms 75.93% of accurate classifications. However, the model with l2 penalty performs better in the ROC curve, that is, the model is more accurate under the umbalanced class. </p>
 
-<p>Our preferred model therefore performs 75.93% of accurate classifications, with a precision of 86.4% for class 0 and  and 17.5% for class 1. This means that we are performing an accurate classification of a very small percentage of the actual risky loans.    </p>
+<p>Our preferred model therefore performs 75.93% of accurate classifications, with a precision of 86.4% for class 0 and  and 17.5% for class 1. This means that we are performing an accurate classification of a very small percentage of the actually risky loans.    </p>
 
 <p><strong>Figure 11: ROC curve for sentiment analysis</strong><br>
 <img src="https://thefaulters.github.io/Lending-Club-Default-Predictions/Images/sent_ROC.png" alt="">  </p>
